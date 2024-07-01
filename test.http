@@ -1,0 +1,64 @@
+POST http://localhost:3000/api?detakJantung=81&kelembapanKulit=0.234&statusJantung=baik&statusKulit=baik&statusStres=Normal
+Content-Type: application/json
+Accept: application/json
+
+### get data sensor Monitoring
+GET http://localhost:3000/api/sensors
+Content-Type: application/json
+Accept: application/json
+
+
+### get all data sensors
+GET http://localhost:3000/api/allSensors
+Content-Type: application/json
+Accept: application/json
+
+
+### create data users 
+POST http://localhost:3000/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+    "tanggal" : "2024-02-08",
+    "nama" : "Nisa Aulia",
+    "detak_jantung": "90",
+    "kelembapan_kulit": "0.233",
+    "status_stres" : "Normal"
+}
+
+
+### get data users
+GET http://localhost:3000/api/users
+Content-Type: application/json
+Accept: application/json
+
+
+### register account
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username" : "ari123",
+    "password" : "ari123",
+    "name" : "Seneng Ari"
+}
+
+
+### login account 
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username" : "ari123",
+    "password" : "ari123"
+}
+
+
+### get data account
+GET http://localhost:3000/api/users/account
+Content-Type: application/json
+Accept: application/json
+

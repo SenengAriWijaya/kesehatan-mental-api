@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Sensor {
+  id               Int    @id @default(autoincrement())
+  tanggal          String @db.VarChar(50)
+  detak_jantung    String @default("0") @db.VarChar(20)
+  kelembapan_kulit String @default("0") @db.VarChar(20)
+  status_jantung   String @db.VarChar(100)
+  status_kulit     String @db.VarChar(100)
+  status_stres     String @db.VarChar(100)
+
+  @@map("sensors")
+}
+
+model User {
+  id               Int    @id @default(autoincrement())
+  tanggal          String @db.VarChar(50)
+  nama             String @db.VarChar(100)
+  detak_jantung    String @default("0") @db.VarChar(20)
+  kelembapan_kulit String @default("0") @db.VarChar(20)
+  status_stres     String @db.VarChar(100)
+
+  @@map("users")
+}
+
+model Auth {
+  username String @id @db.VarChar(100)
+  password String @db.VarChar(100)
+  name     String @db.VarChar(100)
+}
