@@ -13,9 +13,17 @@ const createUser = async (req) => {
 };
 
 const getUsers = async () => {
-  //   const users = await prismaClient.user.findMany();
-  //   return users;
-  return await prismaClient.user.findMany();
+  const users = await prismaClient.user.findMany({
+    orderBy: {
+      id: "desc",
+    },
+  });
+  return users;
+  // return await prismaClient.user.findMany({
+  //   orderBy: {
+  //     id: "desc",
+  //   },
+  // });
 };
 
 export default { createUser, getUsers };

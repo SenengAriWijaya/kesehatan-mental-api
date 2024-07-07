@@ -14,7 +14,11 @@ const monitoringSensor = async () => {
 };
 
 const allSensors = async () => {
-  const sensors = await prismaClient.sensor.findMany();
+  const sensors = await prismaClient.sensor.findMany({
+    orderBy: {
+      id: "desc",
+    },
+  });
   return sensors;
 };
 

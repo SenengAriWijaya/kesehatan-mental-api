@@ -1,4 +1,5 @@
 import { prismaClient } from "../application/database.js";
+import { ResponseError } from "../error/response-error.js";
 import userServive from "../service/user-servive.js";
 
 const createUsers = async (req, res, next) => {
@@ -29,10 +30,16 @@ const createUsers = async (req, res, next) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const result = await prismaClient.user.findMany();
-    res.status(200).json(result);
+    const result = await userServive.getUsers();
+    if (!result) throw new Error("Data user tidak ditemukan");
+    res.status(200).json({
+      status: "success",
+      data: result,
+      message: "Get all data user successfully",
+    });
   } catch (e) {
     console.error(e);
+    res.status(404).json({ msg: e.message });
   }
 };
 
